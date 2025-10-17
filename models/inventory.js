@@ -5,10 +5,10 @@ const inventorySchema = new mongoose.Schema({
   price: { type: Number, required: true },
   item_sku: { type: String },
   discription: { type: String },
-  inStock: { type: Boolean, required: true },
+  inStock: { type: Boolean, default: true },
   quantity: { type: Number, required: true },
 });
 
-const Inventory = mongoose.model("inventory", inventorySchema);
+const Inventory = mongoose.model("inventory", inventorySchema, "inventory");
 
 export default Inventory;

@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 
 const customerSchema = new mongoose.Schema({
 //   account_id: { type: Number, required: true },
-  username: { type: String, required: true },
+  userName: { type: String, required: true },
   name: { type: String, required: true },
   address: { type: String, required: true },
-  birthdate: { type: Date, required: true },
+  birthDate: { type: Date, required: true },
   email: { type: String, required: true },
   active: { type: Boolean },
 //   transactions: [{type: mongoose.Schema.Types.ObjectId} ],

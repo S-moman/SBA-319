@@ -9,13 +9,16 @@ const port = process.env.PORT || 4444;
 await mongoose.connect(process.env.ATLAS_URI);
 console.log("Connected to Database");
 
-import customerRoutes from "./routes/customers.js";
-import transactionRoutes from './routes/transactions.js'
+import customerRoute from "./routes/customers.js";
+import transactionRoute from './routes/transactions.js'
+import inventoryRoute from "./routes/inventory.js";
 
 app.use(morgan("common"));
 app.use(express.json())
-app.use("/customers", customerRoutes);
-app.use("/transactions", transactionRoutes);
+app.use("/customers", customerRoute);
+app.use("/transactions", transactionRoute);
+app.use("/inventory", inventoryRoute);
+
 
 app.get("/", (req, res) => {
   res

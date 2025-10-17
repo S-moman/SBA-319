@@ -76,7 +76,6 @@ async function updateInventoryInfo(req, res) {
 
 export default {
   getInventory,
-  getSeedData,
   createInventory,
   getInventoryById,
   deleteInventoryById,

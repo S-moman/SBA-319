@@ -13,6 +13,6 @@ router
   .delete(inventoryController.deleteInventoryById)
   .patch(inventoryController.updateInventoryInfo);
 
-router.route("/seed").get(inventoryController.getSeedData);
+// router.route("/seed").get(inventoryController.getSeedData);
 
 export default router;
