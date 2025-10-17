@@ -25,9 +25,9 @@ async function createCustomer(req, res) {
 
 async function getCustById(req, res) {
   try {
-    const results = await Customers.findById({});
-    console.log(results);
+    const results = await Customers.findById(req.params.id);
     res.json(results).status(200);
+    console.log(results);
   } catch (e) {
     console.log(e);
     res.json({ error: e.message }).status(400);
@@ -35,9 +35,9 @@ async function getCustById(req, res) {
 }
 async function deleteCustById(req, res) {
   try {
-    const results = await Customers.findByIdAndDelete({});
+    const results = await Customers.findByIdAndDelete(req.params.id);
     if (!results) {
-      res.json({ error: 'Not Found' }).status(404);
+      res.json({ error: "Not Found" }).status(404);
     } else {
       res.json(results).status(204);
     }
@@ -50,8 +50,10 @@ async function deleteCustById(req, res) {
 }
 
 async function updateCustInfo(req, res) {
-    try {
-   const results = Customers.findByIdAndUpdate({})
+  try {
+    const results = await Customers.findByIdAndUpdate(
+      { _id: req.params.id }, req.body
+    );
     res.json(results).status(200);
   } catch (e) {
     console.log(e);
@@ -77,4 +79,5 @@ export default {
   createCustomer,
   getCustById,
   deleteCustById,
+  updateCustInfo,
 };

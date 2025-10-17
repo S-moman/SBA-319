@@ -8,10 +8,12 @@ router
   .route("/")
   .get(customerController.getCustomerInfo)
   .post(customerController.createCustomer);
-  
-router.route('/:id')
-.get(customerController.getCustById)
-.delete(customerController.deleteCustById);
+
+router
+  .route("/:id")
+  .get(customerController.getCustById)
+  .delete(customerController.deleteCustById)
+  .patch(customerController.updateCustInfo);
 
 router.route("/seed").get(customerController.getSeedData);
 
