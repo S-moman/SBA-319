@@ -5,7 +5,7 @@ const transactionSchema = new mongoose.Schema({
   itemCount: { type: Number, required: true },
   items: [
     {
-      name: { typre: String, required: true },
+      name: { type: String, required: true },
       price: { type: Number, required: true },
     },
   ],

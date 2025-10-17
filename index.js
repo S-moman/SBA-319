@@ -10,10 +10,12 @@ await mongoose.connect(process.env.ATLAS_URI);
 console.log("Connected to Database");
 
 import customerRoutes from "./routes/customers.js";
+import transactionRoutes from './routes/transactions.js'
 
 app.use(morgan("common"));
 app.use(express.json())
 app.use("/customers", customerRoutes);
+app.use("/transactions", transactionRoutes);
 
 app.get("/", (req, res) => {
   res

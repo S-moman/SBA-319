@@ -1,7 +1,5 @@
 import e from "express";
-
 const router = e.Router();
-
 import customerController from "../controller/customers.js";
 
 router
