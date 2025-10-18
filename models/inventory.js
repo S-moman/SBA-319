@@ -7,6 +7,7 @@ const inventorySchema = new mongoose.Schema({
   discription: { type: String },
   inStock: { type: Boolean, default: true },
   quantity: { type: Number, required: true },
+  updated: {type: Date, default: Date.now }
 });
 
 const Inventory = mongoose.model("inventory", inventorySchema, "inventory");

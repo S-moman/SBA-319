@@ -13,7 +13,9 @@ async function getTransactions(req, res) {
 async function createTransaction(req, res) {
   try {
     const newDoc = req.body;
+    console.log(newDoc)
     const newTran = await Transactions.create(newDoc);
+    console.log(newTran)
     res.json(newTran).status(201);
   } catch (e) {
     console.log(e);
@@ -23,7 +25,7 @@ async function createTransaction(req, res) {
 
 async function getTranById(req, res) {
   try {
-    const results = await Transactions.findById(req.params.findById);
+    const results = await Transactions.findById(req.params.id);
     res.json(results).status(200);
   } catch (e) {
     console.log(e);

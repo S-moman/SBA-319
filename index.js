@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 4444;
 
 await mongoose.connect(process.env.ATLAS_URI);
-console.log("Connected to Database");
+console.log("Connected to Database...");
 
 import customerRoute from "./routes/customers.js";
 import transactionRoute from './routes/transactions.js'
@@ -16,8 +16,9 @@ import inventoryRoute from "./routes/inventory.js";
 app.use(morgan("common"));
 app.use(express.json())
 app.use("/customers", customerRoute);
-app.use("/transactions", transactionRoute);
 app.use("/inventory", inventoryRoute);
+app.use("/transactions", transactionRoute);
+
 
 
 app.get("/", (req, res) => {
@@ -33,5 +34,5 @@ app.use((err, _req, res, next) => {
 });
 
 app.listen(port, (req, res) => {
-  console.log(`Listening on port: ${port}...`);
+  console.log(`Listening on port: ${port}, ready when you are...`);
 });

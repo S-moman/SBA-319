@@ -3,12 +3,14 @@ import mongoose from "mongoose";
 
 const customerSchema = new mongoose.Schema({
 //   account_id: { type: Number, required: true },
-  userName: { type: String, required: true },
+  userName: { type: String, required: true,
+   },
   name: { type: String, required: true },
   address: { type: String, required: true },
   birthDate: { type: Date, required: true },
   email: { type: String, required: true },
   active: { type: Boolean },
+  updated: {type: Date, default: Date.now }
 //   transactions: [{type: mongoose.Schema.Types.ObjectId} ],
 });
 
