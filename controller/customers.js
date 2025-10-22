@@ -73,6 +73,74 @@ async function getSeedData(req, res) {
     res.json({ error: e.message }).status(400);
   }
 }
+async function getCustByUserName(req, res) {
+  try {
+    const results = await Customers.find( { userName: req.params.userName } );
+    res.json(results).status(200);
+    console.log(results);
+  } catch (e) {
+    console.log(e);
+    res.json({ error: e.message }).status(400);
+  }
+}
+
+async function deleteCustByUserName(req, res) {
+  try {
+    const results = await Customers.find( { userName: req.params.username } );
+    if (!results) {
+      res.json({ error: "Not Found" }).status(404);
+    } else {
+      res.json(results).status(204);
+    }
+    console.log(results);
+    res.json(results).status(200);
+  } catch (e) {
+    console.log(e);
+    res.json({ error: e.message }).status(400);
+  }
+}
+
+
+async function getCustByEmail(req, res) {
+  try {
+    const results = await Customers.find({email: req.params.email});
+    res.json(results).status(200);
+    console.log(results);
+  } catch (e) {
+    console.log(e);
+    res.json({ error: e.message }).status(400);
+  }
+}
+
+async function deleteCustByEmail(req, res) {
+  try {
+    const results = await Customers.find( { email: req.params.email } );
+    if (!results) {
+      res.json({ error: "Not Found" }).status(404);
+    } else {
+      res.json(results).status(204);
+    }
+    console.log(results);
+    res.json(results).status(200);
+  } catch (e) {
+    console.log(e);
+    res.json({ error: e.message }).status(400);
+  }
+}
+
+async function updateCustByEmail(req, res) {
+  try {
+    const results = await Customers.find(
+      { email: req.params.email }, req.body
+    );
+    res.json(results).status(200);
+  } catch (e) {
+    console.log(e);
+    res.json({ error: e.message }).status(400);
+  }
+}
+
+
 export default {
   getCustomerInfo,
   getSeedData,
@@ -80,4 +148,9 @@ export default {
   getCustById,
   deleteCustById,
   updateCustInfo,
+  getCustByUserName,
+  getCustByEmail,
+  deleteCustByEmail,
+  deleteCustByUserName,
+  updateCustByEmail,
 };
