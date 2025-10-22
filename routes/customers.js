@@ -2,6 +2,8 @@ import e from "express";
 const router = e.Router();
 import customerController from "../controller/customers.js";
 
+router.route("/seed").get(customerController.getSeedData);
+
 router
   .route("/")
   .get(customerController.getCustomerInfo)
@@ -12,7 +14,5 @@ router
   .get(customerController.getCustById)
   .delete(customerController.deleteCustById)
   .patch(customerController.updateCustInfo);
-
-router.route("/seed").get(customerController.getSeedData);
 
 export default router;

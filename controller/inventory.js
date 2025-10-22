@@ -1,4 +1,5 @@
 import Inventory from "../models/inventory.js";
+import item from "../seeders/inventory.js"
 
 async function getInventory(req, res) {
   try {
@@ -61,18 +62,18 @@ async function updateInventoryInfo(req, res) {
   }
 }
 
-// async function getSeedData(req, res) {
-//   try {
-//     const resultDelete = await Inventory.deleteMany({});
-//     const resultInsert = await Inventory.insertMany(customer);
-//     let results = await Inventory.find({});
-//     console.log(results);
-//     res.json(results).status(200);
-//   } catch (e) {
-//     console.log(e);
-//     res.json({ error: e.message }).status(400);
-//   }
-// }
+async function getSeedData(req, res) {
+  try {
+    const resultDelete = await Inventory.deleteMany({});
+    const resultInsert = await Inventory.insertMany(item);
+    let results = await Inventory.find({});
+    console.log(results);
+    res.json(results).status(200);
+  } catch (e) {
+    console.log(e);
+    res.json({ error: e.message }).status(400);
+  }
+}
 
 export default {
   getInventory,
@@ -80,4 +81,5 @@ export default {
   getInventoryById,
   deleteInventoryById,
   updateInventoryInfo,
+  getSeedData,
 };

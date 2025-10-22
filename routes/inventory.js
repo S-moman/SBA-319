@@ -2,6 +2,8 @@ import e from "express";
 const router = e.Router();
 import inventoryController from "../controller/inventory.js";
 
+router.route("/seed").get(inventoryController.getSeedData);
+
 router
   .route("/")
   .get(inventoryController.getInventory)
@@ -13,6 +15,5 @@ router
   .delete(inventoryController.deleteInventoryById)
   .patch(inventoryController.updateInventoryInfo);
 
-// router.route("/seed").get(inventoryController.getSeedData);
 
 export default router;

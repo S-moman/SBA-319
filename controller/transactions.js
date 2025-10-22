@@ -1,4 +1,5 @@
 import Transactions from "../models/transactions.js";
+import transaction from "../seeders/transactions.js";
 
 async function getTransactions(req, res) {
   try {
@@ -35,7 +36,7 @@ async function getTranById(req, res) {
 
 async function deleteTranById(req, res) {
   try {
-    const results = await Transactions.findByIdAndDelete(req.params.id);
+    const results = await Transactions.findByIdAndDelete(req.params_id);
     if (!results) {
       res.json({ error: "Not Found" }).status(404);
     } else {
@@ -49,9 +50,23 @@ async function deleteTranById(req, res) {
   }
 }
 
+async function getSeedData(req, res) {
+  try {
+    const resultDelete = await Transactions.deleteMany({});
+    const resultInsert = await Transactions.insertMany(transaction);
+    let results = await Transactions.find({});
+    console.log(results);
+    res.json(results).status(200);
+  } catch (e) {
+    console.log(e);
+    res.json({ error: e.message }).status(400);
+  }
+}
+
 export default {
   getTransactions,
   getTranById,
   createTransaction,
   deleteTranById,
+  getSeedData,
 };
