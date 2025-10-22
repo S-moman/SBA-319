@@ -1,4 +1,4 @@
-# Welcom to my SBA-318 API
+# Welcome to my SBA-319 MongoDB & Mongoose DataBase App
 
 ## Read Me
 
